@@ -445,8 +445,12 @@ case ${TOOL} in
         fi
         massagePkgSpecForVendor
 
-        step "Running: go install -v ${FLAGS[@]} ${pkgs}"
-        go install -v "${FLAGS[@]}" ${pkgs} 2>&1
+        # step "Running: go install -v ${FLAGS[@]} ${pkgs}"
+        # go install -v "${FLAGS[@]}" ${pkgs} 2>&1
+
+        # above causes problems with the treehacks website directory layout
+        # just use the makefile
+        make dep
     ;;
     glide)
         ensureGlide ${GlideVersion}
